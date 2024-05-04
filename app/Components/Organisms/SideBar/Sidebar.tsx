@@ -36,7 +36,7 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
               <ListItemIcon>
                 <ChatBubbleOutlineIcon fontSize="small" />
               </ListItemIcon>
-              <Typography variant="body2">Link 1</Typography>
+              <Typography variant="body2">Some Content showed up</Typography>
             </MenuItem>
           </Tooltip>
           <Tooltip title="Link 2" placement="right-start">
@@ -45,6 +45,22 @@ const Sidebar: React.FC<SidebarProps> = ({}) => {
                 <ChatBubbleOutlineIcon fontSize="small" />
               </ListItemIcon>
               <Typography variant="body2">Link 2</Typography>
+            </MenuItem>
+          </Tooltip>
+          <Tooltip title="Link 3" placement="right-start">
+            <MenuItem>
+              <ListItemIcon>
+                <ChatBubbleOutlineIcon fontSize="small" />
+              </ListItemIcon>
+              <Typography variant="body2">Link 3</Typography>
+            </MenuItem>
+          </Tooltip>
+          <Tooltip title="Link 4" placement="right-start">
+            <MenuItem>
+              <ListItemIcon>
+                <ChatBubbleOutlineIcon fontSize="small" />
+              </ListItemIcon>
+              <Typography variant="body2">Link 4</Typography>
             </MenuItem>
           </Tooltip>
         </MenuList>

@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import PromptContent from "../../Molecules/PromptContent/PromptContent";
+import Image from "next/image";
 
 interface MainContentProps {}
 const MainContent: React.FC<MainContentProps> = (props) => {
@@ -77,7 +78,7 @@ const MainContent: React.FC<MainContentProps> = (props) => {
 
       <Box sx={{ display: "flex", justifyContent: "center", gap: 2 }}>
         {paperData.map((data, index) => (
-          <PromptContent key={index} text={data.text} />
+          <PromptContent key={index} text={data.text} icon={<Image src="google.svg" alt="face" width={18} height={18} />} />
         ))}
       </Box>
     </Box>

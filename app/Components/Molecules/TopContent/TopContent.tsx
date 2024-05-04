@@ -8,6 +8,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Chip from "@mui/material/Chip";
 import Image from "next/image";
+import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 
 const TopContent: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -43,7 +44,7 @@ const TopContent: React.FC = () => {
         onClose={handleClose}
         PaperProps={{
           style: {
-            backgroundColor: "#dde3ea",
+            backgroundColor: "#e9eef6",
             width: "17rem",
           },
         }}
@@ -53,8 +54,8 @@ const TopContent: React.FC = () => {
             <Image src="gemini.svg" alt="face" width={15} height={15} />
             Gemini
           </Box>
-          <IconButton style={{ marginLeft: "auto" }}>
-            <ArrowRightIcon />
+          <IconButton style={{ marginLeft: "auto",  color:'black' }}>
+           <CheckCircleOutlineIcon />
           </IconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disabled={!advanced}>
