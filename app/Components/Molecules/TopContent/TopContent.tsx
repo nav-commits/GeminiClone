@@ -8,7 +8,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import Chip from "@mui/material/Chip";
 import Image from "next/image";
-import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 const TopContent: React.FC = () => {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -29,10 +29,9 @@ const TopContent: React.FC = () => {
         sx={{
           color: "grey",
           fontSize: "1.3rem",
-
           textTransform: "none",
         }}
-        endIcon={<ArrowDropDownIcon />}
+        endIcon={<ArrowDropDownIcon sx={{ color: "black" }} />}
       >
         Gemini
       </Button>
@@ -51,20 +50,36 @@ const TopContent: React.FC = () => {
       >
         <MenuItem onClick={handleClose}>
           <Box sx={{ display: "flex", gap: 1 }}>
-            <Image src="gemini.svg" alt="face" width={15} height={15} />
+            <Image src="gemini2.svg" alt="face" width={18} height={18} />
             Gemini
           </Box>
-          <IconButton style={{ marginLeft: "auto",  color:'black' }}>
-           <CheckCircleOutlineIcon />
+          <IconButton style={{ marginLeft: "auto", color: "black" }}>
+            <CheckCircleOutlineIcon />
           </IconButton>
         </MenuItem>
         <MenuItem onClick={handleClose} disabled={!advanced}>
-          <Box sx={{ display: "flex", gap: 1, opacity: advanced ? 1 : 0.5 }}>
-            <Image src="gemini.svg" alt="face" width={15} height={15} />
+          <Box sx={{ display: "flex", gap: 1 }}>
+            <Image
+              src="gemini.svg"
+              alt="face"
+              width={18}
+              height={18}
+            />
             Gemini Advanced
           </Box>
           <IconButton style={{ marginLeft: "auto" }}>
-            <ArrowRightIcon />
+            <Button
+              variant="contained"
+              sx={{
+                color: "black",
+                backgroundColor: "white",
+                textTransform: "none",
+                boxShadow: "none",
+                ml: 2,
+              }}
+            >
+              Upgrade
+            </Button>
           </IconButton>
         </MenuItem>
       </Menu>
