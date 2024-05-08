@@ -22,7 +22,7 @@ const TopContent: React.FC = () => {
   };
   return (
     <Box
-      sx={{ display: "flex", justifyContent: "space-between", mt: "0.9rem" }}
+      sx={{ display: "flex", justifyContent: "space-between", mt: "0.9rem", mr: '2rem' }}
     >
       <Button
         onClick={handleClick}
@@ -35,7 +35,6 @@ const TopContent: React.FC = () => {
       >
         Gemini
       </Button>
-
       <Menu
         id="dropdown-menu"
         anchorEl={anchorEl}
@@ -67,7 +66,6 @@ const TopContent: React.FC = () => {
             />
             Gemini Advanced
           </Box>
-          <IconButton style={{ marginLeft: "auto" }}>
             <Button
               variant="contained"
               sx={{
@@ -75,12 +73,11 @@ const TopContent: React.FC = () => {
                 backgroundColor: "white",
                 textTransform: "none",
                 boxShadow: "none",
-                ml: 2,
+                ml: 4,
               }}
             >
               Upgrade
             </Button>
-          </IconButton>
         </MenuItem>
       </Menu>
       <Chip
