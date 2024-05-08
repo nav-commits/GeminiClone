@@ -1,17 +1,15 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import { SearchBarProps } from "../SearchBar/SearchBar.types";
 
-const SearchBar = () => {
-//   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-//     const value = event.target.value;
-//     onSearch(value);
-//   };
-
+const SearchBar: React.FC<SearchBarProps> = ({value, onChange}) => {
   return (
     <>
       <TextField
         placeholder="Enter a prompt here"
         variant="standard"  
+        value={value}
+        onChange={onChange}
         fullWidth
         sx={{
           backgroundColor: "#f0f4f9",

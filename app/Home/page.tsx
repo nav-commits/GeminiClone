@@ -1,18 +1,44 @@
+'use client'
 import * as React from "react";
+import { GoogleGenerativeAI } from "@google/generative-ai";
 import Sidebar from "../Components/Organisms/SideBar/Sidebar";
 import TopContent from "../Components/Molecules/TopContent/TopContent";
 import MainContent from "../Components/Organisms/MainContent/MainContent";
 import { Box, Grid } from "@mui/material";
-import SearchBar from "../Components/Atoms/SearchBar";
-import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
-import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
-import KeyboardVoiceOutlinedIcon from '@mui/icons-material/KeyboardVoiceOutlined';
+import SearchBarContent from "../Components/Molecules/SearchBarContent/SearchBarContent";
 
 export default function Home() {
+  const apiKey: string = process.env.NEXT_PUBLIC_API_KEY ?? "";
+  const genAI = new GoogleGenerativeAI(apiKey);
+  async function run() {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro"}); 
+    const chat = model.startChat({
+      history: [
+        {
+          role: "user",
+          parts: [{ text: "Hello, I have 2 dogs in my house." }],
+        },
+        {
+          role: "model",
+          parts: [{ text: "Great to meet you. What would you like to know?" }],
+        },
+      ],
+      generationConfig: {
+        maxOutputTokens: 100,
+      },
+    });
+ 
+    const msg = "Who is the rock?"; 
+    const result = await chat.sendMessage(msg);
+    const response = await result.response;
+    const text = response.text();
+    console.log(text);
+  }
+  
   return (
     <Grid container>
       {/* Sidebar */}
-      <Grid item xs={1.3}>
+      <Grid item xs={2}>
         <Sidebar />
       </Grid>
       {/* Main Content */}
@@ -20,26 +46,7 @@ export default function Home() {
         <TopContent />
         <Box display="flex" justifyContent={"center"}>
           <MainContent />
-          <Box
-            sx={{
-              position: "fixed",
-              bottom: 20,
-              minWidth: "50%",
-              zIndex: 1000,
-              paddingTop: "0.9rem",
-              paddingBottom: "0.9rem",
-              paddingLeft: "1rem",
-              paddingRight: "1rem",
-              backgroundColor: "#f0f4f9",
-              borderRadius: "2rem",
-              display: "flex",
-              gap: "1rem",
-            }}
-          >
-            <SearchBar />
-            <AddPhotoAlternateOutlinedIcon  />
-            <KeyboardVoiceOutlinedIcon />
-          </Box>
+          <SearchBarContent submitChat={run} />
         </Box>
       </Grid>
     </Grid>

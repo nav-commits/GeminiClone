@@ -1,42 +1,12 @@
+
 import React from "react";
 import { Box, Typography } from "@mui/material";
-import { GoogleGenerativeAI } from "@google/generative-ai";
 import PromptContent from "../../Molecules/PromptContent/PromptContent";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import Image from "next/image";
 import DriveFileRenameOutlineOutlinedIcon from "@mui/icons-material/DriveFileRenameOutlineOutlined";
-import SearchBar from "../../Atoms/SearchBar";
-
 interface MainContentProps {}
 const MainContent: React.FC<MainContentProps> = (props) => {
-  const apiKey: string = process.env.NEXT_PUBLIC_API_KEY ?? "";
-  const genAI = new GoogleGenerativeAI(apiKey);
-
-  async function run() {
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const chat = model.startChat({
-      history: [
-        {
-          role: "user",
-          parts: [{ text: "Hello, I have 2 dogs in my house." }],
-        },
-        {
-          role: "model",
-          parts: [{ text: "Great to meet you. What would you like to know?" }],
-        },
-      ],
-      generationConfig: {
-        maxOutputTokens: 100,
-      },
-    });
-
-    const msg = "Who is tripleh ?";
-    const result = await chat.sendMessage(msg);
-    const response = await result.response;
-    const text = response.text();
-    console.log(text);
-    console.log(chat);
-  }
 
   const paperData = [
     { text: "Road trip drive time and kid entertainment ideas" },
